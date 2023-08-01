@@ -2,7 +2,8 @@ name: tccNew
 version: '${project.version}'
 main: thedavid.tccnew.TccNew
 api-version: '1.20'
-depends: [DiscordSRV]
+depend:
+  - DiscordSRV
 commands:
   test:
     permission: op

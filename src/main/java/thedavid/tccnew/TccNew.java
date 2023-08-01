@@ -46,7 +46,7 @@ public final class TccNew extends JavaPlugin {
                     }
                 }
             }
-        }.runTaskTimer(instance, 20, 20);
+        }.runTaskTimerAsynchronously(instance, 220, 20L);
     }
 
     @Override
