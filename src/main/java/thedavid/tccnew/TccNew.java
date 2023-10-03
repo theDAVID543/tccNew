@@ -13,11 +13,13 @@ import java.util.UUID;
 
 public final class TccNew extends JavaPlugin {
     public static JavaPlugin instance;
-    private final DiscordSRVListener discordsrvListener = new DiscordSRVListener(this);
+    public DiscordSRVListener discordSRVListener;
     @Override
     public void onEnable() {
         // Plugin startup logic
         instance = this;
+        discordSRVListener = new DiscordSRVListener(this);
+        DiscordSRV.api.subscribe(discordSRVListener);
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "tcc:channel");
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "tcc:channel", new pluginMessageHandler());
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "tcc:discord");
@@ -26,7 +28,6 @@ public final class TccNew extends JavaPlugin {
         Objects.requireNonNull(Bukkit.getPluginCommand("test")).setExecutor(new commandHandler());
         Bukkit.getPluginManager().registerEvents(new eventListener(), instance);
         setupChat();
-        DiscordSRV.api.subscribe(discordsrvListener);
         new BukkitRunnable(){
             @Override
             public void run() {
@@ -54,7 +55,7 @@ public final class TccNew extends JavaPlugin {
         // Plugin shutdown logic
         this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
         this.getServer().getMessenger().unregisterIncomingPluginChannel(this);
-        DiscordSRV.api.unsubscribe(discordsrvListener);
+        DiscordSRV.api.unsubscribe(discordSRVListener);
     }
     public static Chat chat = null;
     private void setupChat() {

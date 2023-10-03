@@ -4,6 +4,7 @@ main: thedavid.tccnew.TccNew
 api-version: '1.20'
 depend:
   - DiscordSRV
+  - Vault
 commands:
   test:
     permission: op

@@ -4,8 +4,6 @@ import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import com.loohp.interactivechatdiscordsrvaddon.InteractiveChatDiscordSrvAddon;
 import github.scarsz.discordsrv.DiscordSRV;
-import github.scarsz.discordsrv.dependencies.jda.api.EmbedBuilder;
-import github.scarsz.discordsrv.dependencies.jda.api.entities.MessageEmbed;
 import github.scarsz.discordsrv.dependencies.jda.api.entities.TextChannel;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.Component;
@@ -19,7 +17,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.awt.*;
 import java.util.Objects;
 
 public class eventListener implements Listener {
@@ -86,8 +83,9 @@ public class eventListener implements Listener {
                 if(!pluginMessageHandler.changeServer.contains(e.getPlayer())){
                     TextChannel general = DiscordSRV.getPlugin().getDestinationTextChannelForGameChannelName("general");
                     final String uuid = e.getPlayer().getUniqueId().toString().replace("-","");
-                    MessageEmbed messageEmbed = new EmbedBuilder().setColor(Color.RED).setAuthor(e.getPlayer().getName() + " 離開了伺服器", null, "https://crafatar.com/avatars/" + uuid + ".png?size=128&overlay").build();
-                    general.sendMessageEmbeds(messageEmbed).queue();
+//                    MessageEmbed messageEmbed = new EmbedBuilder().setColor(Color.RED).setAuthor(e.getPlayer().getName() + " 離開了伺服器", null, "https://crafatar.com/avatars/" + uuid + ".png?size=128&overlay").build();
+//                    general.sendMessageEmbeds(messageEmbed).queue();
+                    general.sendMessage("> <:leave:1149273123661819935>  **" + e.getPlayer().getName() + "** 離開了伺服器").queue();
                 }else{
                     pluginMessageHandler.changeServer.remove(e.getPlayer());
                 }

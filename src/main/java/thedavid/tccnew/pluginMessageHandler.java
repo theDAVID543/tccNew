@@ -37,8 +37,9 @@ public class pluginMessageHandler implements PluginMessageListener {
                 Bukkit.getLogger().info("received login plugin message");
                 TextChannel general = DiscordSRV.getPlugin().getDestinationTextChannelForGameChannelName("general");
                 final String uuid = Bukkit.getOfflinePlayer(inPlayer).getUniqueId().toString().replace("-","");
-                MessageEmbed messageEmbed = new EmbedBuilder().setColor(Color.GREEN).setAuthor(inPlayer + " 加入了伺服器", null, "https://crafatar.com/avatars/" + uuid + ".png?size=128&overlay").build();
-                general.sendMessageEmbeds(messageEmbed).queue();
+//                MessageEmbed messageEmbed = new EmbedBuilder().setColor(Color.GREEN).setAuthor("" + inPlayer + " 加入了伺服器", null, "https://crafatar.com/avatars/" + uuid + ".png?size=128&overlay").build();
+//                general.sendMessageEmbeds(messageEmbed).queue();
+                general.sendMessage("> <:enter:1149271977484374046> **" + inPlayer + "** 加入了伺服器").queue();
             }
         }else if(pluginChannel.equals("tcc:channel")){
             Bukkit.getLogger().info("received tcc:channel");
